@@ -127,21 +127,22 @@ public class Control {
 				pDot1.velocityManager(); //manage social distancing and/or roaming values of the Person
 				
 				//set the color of the for the person oval based on the health status of person object
-				switch(pDot1.state) {
-					case candidate:
-						gDot1.setColor(Color.LIGHT_GRAY);
-						break;
-					case infected:
-						gDot1.setColor(Color.red);
-						break;
-					case recovered:
-						gDot1.setColor(Color.green);
-						break;
-					case died:
-						gDot1.setColor(Color.black);
-						
+				if(pDot1.isWall == false) {
+					switch(pDot1.state) {
+						case candidate:
+							gDot1.setColor(Color.LIGHT_GRAY);
+							break;
+						case infected:
+							gDot1.setColor(Color.red);
+							break;
+						case recovered:
+							gDot1.setColor(Color.green);
+							break;
+						case died:
+							gDot1.setColor(Color.black);
+							
+					}
 				}
-				
 				//draw the person oval in the simulation frame
 				gDot1.fillOval(pDot1.x, pDot1.y, OvalW, OvalH);
 				

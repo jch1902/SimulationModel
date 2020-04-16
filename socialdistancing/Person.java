@@ -43,15 +43,17 @@ public class Person extends Resident {
 	}
 		
 	private void init() {
-		
-		//code to make percentage of the Person objects infected 
-		if(Math.random() < toBeInfected) {
+		if(this.isWall) {
+			
+		}
+		//code to make percentage of the Person objects infected
+		else if(Math.random() < toBeInfected) {
 			this.setInfected();
 		}
-		
 		//randomize how long it takes for the Person objects to recover!
 		//for instance between 5-7 (between Min-Max) seconds (numbers are in milliseconds)
 		sickTime = (int)(Math.random()*(sickTimeMax-sickTimeLow+1)+sickTimeLow);
+
 	}
 	
 	//a series of getters to simplify code reading
@@ -118,11 +120,15 @@ public class Person extends Resident {
 		Person p2 = (Person)r2;
 		//infection only happens if one person is infected and the other has never
 		//been infected before
-		if (this.isInfected() && p2.isCandidate()) {
-			p2.setInfected();
-		}else if(this.isCandidate() && p2.isInfected()) {
-			this.setInfected();
-		}				
+		if(!this.isWall && !p2.isWall) {
+			if (this.isInfected() && p2.isCandidate()) {
+				p2.setInfected();
+			}else if(this.isCandidate() && p2.isInfected()) {
+				this.setInfected();
+			}
+		}else {
+			
+		}
 	}
 	
 	/*
