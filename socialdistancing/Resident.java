@@ -108,7 +108,10 @@ public abstract class Resident {
 	 * 2. Check if resident object boundary/frame extent is reached, then reflect
 	 */
 	public void velocityManager() {
-		
+	
+		if(x == 500 && y >= 500) {//for hitting wall
+			vx *= -1;
+		}
 		//x and y components are updated based on their velocities
 		x += vx;
 		y += vy;
@@ -117,7 +120,7 @@ public abstract class Resident {
 		if(x < 0 || x >= xExt || x == 500) {
 			vx *= -1;
 		}
-		
+
 		//code to reverse object when reaching top/bottom extents
 		if(y < 0 || y >= yExt) {
 			vy *= -1;

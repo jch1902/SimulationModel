@@ -126,6 +126,8 @@ public class Person extends Resident {
 			}else if(this.isCandidate() && p2.isInfected()) {
 				this.setInfected();
 			}
+		}else {
+			super.velocityManager();
 		}
 	}
 	
@@ -135,7 +137,7 @@ public class Person extends Resident {
 	@Override
 	public void velocityManager() {
 		if (isRoaming) {
-			if (this.isRecovered() || this.isDead())
+			if (this.isRecovered() || this.isDead() || this.isWall)
 				super.velocityStop();
 			else
 				super.velocityManager();
