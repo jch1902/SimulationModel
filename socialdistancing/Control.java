@@ -102,7 +102,9 @@ public class Control {
 				//instantiate Person object and add it to the ArrayList
 				model.add(new Person(this));
 			}
-			
+			Person wall = new Person();
+			wall.isWall = true;
+			model.add(wall);
 			// Start the Simulation
 			view.activate();
 		}
