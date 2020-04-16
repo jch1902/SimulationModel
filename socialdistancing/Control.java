@@ -146,14 +146,12 @@ public class Control {
 					
 					// draw the person oval in meter/bar indicator
 					gDot1.fillOval((frameX-(int)(frameX*.02)), (int)(frameY-((numPeople-index)*OvalH)/1.67), OvalW, OvalH);
-					index++;
 				}else {
 					//paints a wall instead
 					gDot1.drawRect(500, 0, 1, 500);
 					gDot1.setColor(Color.LIGHT_GRAY);
 				}
-				
-				
+				index++;
 			}	
 		}
 }

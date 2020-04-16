@@ -109,18 +109,18 @@ public abstract class Resident {
 	 */
 	public void velocityManager() {
 	
-		if(x == 500 && y >= 500) {//for hitting wall
-			vx *= -1;
-		}
+		
 		//x and y components are updated based on their velocities
 		x += vx;
 		y += vy;
 		
 		//code to reverse object when reaching left/right extents
-		if(x < 0 || x >= xExt || x == 500) {
+		if(x < 0 || x >= xExt || x == 500){
 			vx *= -1;
 		}
-
+		if(x == 500 && y >= 500) {//for hitting wall
+			vx *= -1;
+		}
 		//code to reverse object when reaching top/bottom extents
 		if(y < 0 || y >= yExt) {
 			vy *= -1;
