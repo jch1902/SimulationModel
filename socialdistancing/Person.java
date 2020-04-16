@@ -120,7 +120,7 @@ public class Person extends Resident {
 		Person p2 = (Person)r2;
 		//infection only happens if one person is infected and the other has never
 		//been infected before
-		if(!this.isWall && !p2.isWall) {
+		if(!p2.isWall) {
 			if (this.isInfected() && p2.isCandidate()) {
 				p2.setInfected();
 			}else if(this.isCandidate() && p2.isInfected()) {
