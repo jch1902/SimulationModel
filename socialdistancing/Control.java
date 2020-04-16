@@ -149,7 +149,7 @@ public class Control {
 					index++;
 				}else {
 					//paints a wall instead
-					gDot1.drawLine(frameY/2, frameX/10, frameY/2, frameX);
+					gDot1.drawRect(500, 0, 1, 500);
 					gDot1.setColor(Color.LIGHT_GRAY);
 				}
 				

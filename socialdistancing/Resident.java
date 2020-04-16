@@ -114,7 +114,7 @@ public abstract class Resident {
 		y += vy;
 		
 		//code to reverse object when reaching left/right extents
-		if(x < 0 || x >= xExt) {
+		if(x < 0 || x >= xExt || x == 500) {
 			vx *= -1;
 		}
 		

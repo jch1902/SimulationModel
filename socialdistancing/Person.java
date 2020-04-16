@@ -126,11 +126,6 @@ public class Person extends Resident {
 			}else if(this.isCandidate() && p2.isInfected()) {
 				this.setInfected();
 			}
-		}else {
-			p2.vx *= -1;
-			this.vx *= -1;
-			this.vy *= -1;
-			p2.vy *= -1;
 		}
 	}
 	
