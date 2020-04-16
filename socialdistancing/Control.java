@@ -2,6 +2,7 @@ package socialdistancing;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
 public class Control {
@@ -13,6 +14,16 @@ public class Control {
 		// counters for "this" simulation instance
 		public int numInfected = 0;
 		public int numDied= 0;
+		
+		Wall vWall1 = Simulator.vWall1;
+		Wall vWall2 = Simulator.vWall2;
+		Wall vWall3 = Simulator.vWall3;
+		Wall vWall4 = Simulator.vWall4;
+		
+		Wall hWall1 = Simulator.hWall1;
+		Wall hWall2 = Simulator.hWall2;
+		Wall hWall3 = Simulator.hWall3;
+		Wall hWall4 = Simulator.hWall4;
 		
 		// simulation control values
 		public int  numPeople;			
@@ -102,9 +113,7 @@ public class Control {
 				//instantiate Person object and add it to the ArrayList
 				model.add(new Person(this));
 			}
-			Person wall = new Person();
-			wall.isWall = true;
-			model.add(wall);
+			
 			// Start the Simulation
 			view.activate();
 		}
@@ -122,7 +131,7 @@ public class Control {
 					//for each unique pair invoke the collision detection code
 					pDot1.collisionDetector(pDot2);
 				}
-				
+				checkWallCollision(pDot1);
 				pDot1.healthManager(); //manage health values of the Person
 				pDot1.velocityManager(); //manage social distancing and/or roaming values of the Person
 				
@@ -139,20 +148,34 @@ public class Control {
 						break;
 					case died:
 						gDot1.setColor(Color.black);
+						
 				}
-				if(!pDot1.isWall) {
-					//draw the person oval in the simulation frame
-					gDot1.fillOval(pDot1.x, pDot1.y, OvalW, OvalH);
-					
-					// draw the person oval in meter/bar indicator
-					gDot1.fillOval((frameX-(int)(frameX*.02)), (int)(frameY-((numPeople-index)*OvalH)/1.67), OvalW, OvalH);
-				}else {
-					//paints a wall instead
-					gDot1.drawRect(500, 0, 1, 500);
-					gDot1.setColor(Color.LIGHT_GRAY);
-				}
+				
+				//draw the person oval in the simulation frame
+				gDot1.fillOval(pDot1.x, pDot1.y, OvalW, OvalH);
+				
+				// draw the person oval in meter/bar indicator
+				gDot1.fillOval((frameX-(int)(frameX*.02)), (int)(frameY-((numPeople-index)*OvalH)/1.67), OvalW, OvalH);
 				index++;
-			}	
+				
+			}
 		}
-}
 
+		public void checkWallCollision(Person p) {
+			Wall[] walls = {vWall1, hWall1, vWall2, hWall2, vWall3, hWall3, vWall4, hWall4};
+			Rectangle[] r = {vWall1.getBounds(), hWall1.getBounds(), vWall2.getBounds(), hWall2.getBounds(),
+					vWall3.getBounds(), hWall3.getBounds(), vWall4.getBounds(), hWall4.getBounds()};
+			Rectangle rect1 = new Rectangle(p.x,p.y, p.width, p.height);
+			for(int i = 0; i < walls.length;i++)
+			{
+				if(r[i].intersects(rect1))
+					if(walls[i].vertical)
+					{
+						p.vx *= -1;
+					}
+					else
+						p.vy *= -1;
+			}
+		}
+		
+}
