@@ -21,7 +21,7 @@ public abstract class Resident {
 	
 	protected boolean isRoaming = false;
 	double roamingPercent;
-	
+	protected boolean isWall = false;
 	/*
 	 * Constructor using static values
 	 */

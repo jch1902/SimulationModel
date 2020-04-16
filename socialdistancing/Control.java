@@ -149,6 +149,10 @@ public class Control {
 				
 			}	
 		}
-		
+		public void paintWalls(Graphics gWall) {
+			
+			//draw walls
+			gWall.drawLine(frameY/2, frameX/10, frameY/2, frameX);
+		}
 }
 

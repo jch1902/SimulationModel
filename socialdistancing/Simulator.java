@@ -73,6 +73,7 @@ public class Simulator extends JPanel implements ActionListener{
 		//events
 		super.paintComponent(g); // a necessary call to the parent paint method, required for proper screen refreshing	
 		control.paintPersons(g); // repaint all objects in simulation	
+		control.paintWalls(g);//paint walls
 	}
 	
 	
