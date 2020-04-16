@@ -127,35 +127,34 @@ public class Control {
 				pDot1.velocityManager(); //manage social distancing and/or roaming values of the Person
 				
 				//set the color of the for the person oval based on the health status of person object
-				if(pDot1.isWall == false) {
-					switch(pDot1.state) {
-						case candidate:
-							gDot1.setColor(Color.LIGHT_GRAY);
-							break;
-						case infected:
-							gDot1.setColor(Color.red);
-							break;
-						case recovered:
-							gDot1.setColor(Color.green);
-							break;
-						case died:
-							gDot1.setColor(Color.black);
-							
-					}
+				switch(pDot1.state) {
+					case candidate:
+						gDot1.setColor(Color.LIGHT_GRAY);
+						break;
+					case infected:
+						gDot1.setColor(Color.red);
+						break;
+					case recovered:
+						gDot1.setColor(Color.green);
+						break;
+					case died:
+						gDot1.setColor(Color.black);
 				}
-				//draw the person oval in the simulation frame
-				gDot1.fillOval(pDot1.x, pDot1.y, OvalW, OvalH);
+				if(!pDot1.isWall) {
+					//draw the person oval in the simulation frame
+					gDot1.fillOval(pDot1.x, pDot1.y, OvalW, OvalH);
+					
+					// draw the person oval in meter/bar indicator
+					gDot1.fillOval((frameX-(int)(frameX*.02)), (int)(frameY-((numPeople-index)*OvalH)/1.67), OvalW, OvalH);
+					index++;
+				}else {
+					//paints a wall instead
+					gDot1.drawLine(frameY/2, frameX/10, frameY/2, frameX);
+					gDot1.setColor(Color.LIGHT_GRAY);
+				}
 				
-				// draw the person oval in meter/bar indicator
-				gDot1.fillOval((frameX-(int)(frameX*.02)), (int)(frameY-((numPeople-index)*OvalH)/1.67), OvalW, OvalH);
-				index++;
 				
 			}	
-		}
-		public void paintWalls(Graphics gWall) {
-			
-			//draw walls
-			gWall.drawLine(frameY/2, frameX/10, frameY/2, frameX);
 		}
 }
 
