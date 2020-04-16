@@ -11,13 +11,23 @@ import javax.swing.Timer;
 /* 
 	Simulator extends JPanel so that we can override the paint method. The paint method is necessary to use the simple
 	drawing tools of the library! 
-
 	Simulator implements an ActionListener which adds the method actionPerformed. This method is invoked by the 
 	animation timer every timerValue(16ms).
 */
 public class Simulator extends JPanel implements ActionListener{
 	// serial suppresses warning
 	private static final long serialVersionUID = 1L;
+	
+	//Declares Wall sprites
+	public static Wall vWall1 = new Wall(550, 0, "SocialDistancingImages/wall2.png", true);
+	public static Wall vWall2 = new Wall(200, 0, "SocialDistancingImages/wall2.png", true);
+	public static Wall vWall3 = new Wall(550, 400, "SocialDistancingImages/wall2.png", true);
+	public static Wall vWall4 = new Wall(200, 400, "SocialDistancingImages/wall2.png", true);
+	
+	public static Wall hWall1 = new Wall(620, 160, "SocialDistancingImages/wall1.png", false);
+	public static Wall hWall2 = new Wall(-25, 160, "SocialDistancingImages/wall1.png", false);
+	public static Wall hWall3 = new Wall(620, 400, "SocialDistancingImages/wall1.png", false);
+	public static Wall hWall4 = new Wall(-25, 400, "SocialDistancingImages/wall1.png", false);
 	
 	//simulation control objects/values
 	JFrame frame;
@@ -56,7 +66,7 @@ public class Simulator extends JPanel implements ActionListener{
 		frame.setVisible(true);		
 	}
 	
-	/* This invoked by Timer per period in milliseconds in timerValue */
+	/* This invoked by Timer per period in milliseconds in timerValue  */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//Triggers paint call through polymorphism
@@ -73,7 +83,16 @@ public class Simulator extends JPanel implements ActionListener{
 		//events
 		super.paintComponent(g); // a necessary call to the parent paint method, required for proper screen refreshing	
 		control.paintPersons(g); // repaint all objects in simulation	
-	}
+		g.drawImage(vWall1.getImage(), vWall1.getX(), vWall1.getY(), this);
+		g.drawImage(vWall2.getImage(), vWall2.getX(), vWall2.getY(), this);
+		g.drawImage(vWall3.getImage(), vWall3.getX(), vWall3.getY(), this);
+		g.drawImage(vWall4.getImage(), vWall4.getX(), vWall4.getY(), this);
+		
+		g.drawImage(hWall1.getImage(), hWall1.getX(), hWall1.getY(), this);
+		g.drawImage(hWall2.getImage(), hWall2.getX(), hWall2.getY(), this);
+		g.drawImage(hWall3.getImage(), hWall3.getX(), hWall3.getY(), this);
+		g.drawImage(hWall4.getImage(), hWall4.getX(), hWall4.getY(), this);
+	} 
 	
 	
 }
