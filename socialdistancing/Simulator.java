@@ -38,6 +38,7 @@ public class Simulator extends JPanel implements ActionListener{
 	int time = 0; //Track time as the simulation runs
 	
 	JLabel parkLabel;
+	JLabel houseLabel;
 	
 	/* constructor will setup our main Graphic User Interface - a simple Frame! */
 	public Simulator(Control ctl, String title) {
@@ -56,11 +57,18 @@ public class Simulator extends JPanel implements ActionListener{
 		//make it visible
 		frame.add(this); //add this class (JPanel) to the JFrame
 		this.setLayout(null);
+		
 		parkLabel = new JLabel();
 		parkLabel.setText("Park");
 		Dimension parkSize = parkLabel.getPreferredSize();
 	    parkLabel.setBounds(500,100, parkSize.width, parkSize.height);
 		this.add(parkLabel);
+		
+		houseLabel = new JLabel();
+		houseLabel.setText("House 1");
+		Dimension houseSize = houseLabel.getPreferredSize();
+		houseLabel.setBounds(500,100, houseSize.width, houseSize.height);
+		this.add(houseLabel);
 	}
 	
 	//activation of Simulator separated from Constructor 
@@ -103,6 +111,7 @@ public class Simulator extends JPanel implements ActionListener{
 		g.drawImage(hWall3.getImage(), hWall3.getX(), hWall3.getY(), this);
 		g.drawImage(hWall4.getImage(), hWall4.getX(), hWall4.getY(), this);
 		parkLabel.paint(g);
+		houseLabel.paint(g);
 		
 		
 	} 
