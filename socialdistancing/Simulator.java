@@ -55,11 +55,11 @@ public class Simulator extends JPanel implements ActionListener{
 		
 		//make it visible
 		frame.add(this); //add this class (JPanel) to the JFrame
-		setLayout(null);
+		this.setLayout(null);
 		parkLabel = new JLabel();
 		parkLabel.setText("Park");
 		Dimension parkSize = parkLabel.getPreferredSize();
-		parkLabel.setBounds(100,100, parkSize.width, parkSize.height);
+	    parkLabel.setBounds(500,100, parkSize.width, parkSize.height);
 		this.add(parkLabel);
 	}
 	
