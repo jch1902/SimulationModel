@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
+
 public class Control {
 		String title = "Social Distance Simulation";
 		//Model and View
@@ -159,6 +161,9 @@ public class Control {
 				index++;
 				
 			}
+			JLabel parkLabel = new JLabel();
+			parkLabel.setText("Park");
+
 		}
 
 		public void checkWallCollision(Person p) {

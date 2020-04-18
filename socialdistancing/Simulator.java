@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -35,6 +36,8 @@ public class Simulator extends JPanel implements ActionListener{
 	Timer timer; //Event control	
 	int time = 0; //Track time as the simulation runs
 	
+	JLabel parkLabel;
+	
 	/* constructor will setup our main Graphic User Interface - a simple Frame! */
 	public Simulator(Control ctl, String title) {
 		// used for Control callback
@@ -51,7 +54,11 @@ public class Simulator extends JPanel implements ActionListener{
 		
 		//make it visible
 		frame.add(this); //add this class (JPanel) to the JFrame
-		
+		//this.setLayout(null);
+		parkLabel = new JLabel();
+		parkLabel.setText("Park");
+		parkLabel.setBounds(100,100, 10, 10);
+		this.add(parkLabel);
 	}
 	
 	//activation of Simulator separated from Constructor 
@@ -64,6 +71,7 @@ public class Simulator extends JPanel implements ActionListener{
 		
 		// frame becomes visible
 		frame.setVisible(true);		
+	
 	}
 	
 	/* This invoked by Timer per period in milliseconds in timerValue  */
@@ -92,6 +100,9 @@ public class Simulator extends JPanel implements ActionListener{
 		g.drawImage(hWall2.getImage(), hWall2.getX(), hWall2.getY(), this);
 		g.drawImage(hWall3.getImage(), hWall3.getX(), hWall3.getY(), this);
 		g.drawImage(hWall4.getImage(), hWall4.getX(), hWall4.getY(), this);
+		parkLabel.paint(g);
+		
+		
 	} 
 	
 	
