@@ -1,4 +1,5 @@
 package socialdistancing;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,10 +55,11 @@ public class Simulator extends JPanel implements ActionListener{
 		
 		//make it visible
 		frame.add(this); //add this class (JPanel) to the JFrame
-		//this.setLayout(null);
+		setLayout(null);
 		parkLabel = new JLabel();
 		parkLabel.setText("Park");
-		parkLabel.setBounds(100,100, 10, 10);
+		Dimension parkSize = parkLabel.getPreferredSize();
+		parkLabel.setBounds(100,100, parkSize.width, parkSize.height);
 		this.add(parkLabel);
 	}
 	
